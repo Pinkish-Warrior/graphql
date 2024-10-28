@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Project from 01Founders School">
+    <title>GraphQL</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./static/css/stylesheet.css" />
+    <link rel="manifest" href="static/imagens/favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="static/imagens/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="static/imagens/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="static/imagens/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="static/imagens/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="GraphQl" />
+   
+    <style>
+        /* Add custom styles here */
+        .form, .profileDiv, .charts, .logoutButton {
+            margin-top: 60px;
+            margin-bottom: 60px; /* Adjust the margin as needed */
+        }
+
+        footer{
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 0px;
+        }
+
+        .charts > div {
+            margin-bottom: 20px; /* Add space between chart sections */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="https://github.com/Pinkish-Warrior">Home</a>
+            <a href="https://pinkish-warrior.github.io/webpage/">About</a>
+            <a href="mailto:tanrosa@gmail.com">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="form">
+            <div class="input">
+                <h2 id="loging_in" class="text-center">Login</h2>
+                <div id="login">
+            
+                    <form id="login-form" name="loginForm" method="POST">
+                        <div class="inputBox">
+                            <label for="identifier">Username or Email</label>
+                            <input type="text" class="identifier" id="identifier" name="identifier" autocomplete="identifier" required />
+                        </div>
+                        <div class="inputBox">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="password" name="password" autocomplete="current-password" required />
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" name="submit" value="Sign In" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="error" class="error"></div>
+        </section>
+        <div class="profileDiv">
+            <section class="userIdentificationSection">
+                <div class="userInformationDiv">
+                    <h1 class="identifierTitle" style="color:#49108B"></h1>
+                    <p class="userEmail"></p>
+                    <p class="userPhoneNumber"></p>
+                    <p class="userCampus"></p>
+                </div>
+            </section>
+        </div>
+        <section class="charts" style="display: none">
+            <div class="XPSection">
+                <h1 class="XPH1"> XP Evolution</h1>
+                <div class="graphXpAmount"></div>
+            </div>
+            <div class="RatioSection">
+                <h1 class="RatioH1">AUDIT Ratio:</h1>
+                <div class="audit-ratio-chart"></div>
+                <div class="audit-line-chart"></div>
+            </div>
+            <div class="SkillSection">
+                <h1 class="SkillH1">🏆 Skill Go Evolution:</h1>
+                <div class="graphSkillAmount"></div>
+            </div>
+            <div>
+                <button id="logoutButton" style="display: none">Logout</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a href="#">&copy; 2024 Pinkish-Warrior</a>
+    </footer>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

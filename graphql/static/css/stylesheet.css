@@ -1,0 +1,378 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+/* CSS Variables */
+/* :root {
+  --primary-color: #0D7C66;
+  --secondary-color: #e91e63;
+  --tertiary-color: #5d02ff;
+  --hover-color: #8e1ee9;
+  --text-color: #ffffff;
+  --background-color: #473078;
+  --box-shadow-color: #5d02ff;
+  --error-color: red;
+} */
+
+/* Global Styles */
+* {
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Layout Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0D7C66;
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  color: #000;
+  text-align: center;
+  justify-content: center;
+  padding: 0 0 50px 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.container {
+  position: relative;
+  top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  background-color: #ffffff;  /* Change this to your desired background color */
+  padding: 10px;
+  box-shadow: 0 3px 5px #5d02ff;
+  z-index: 999; /* Make sure it's on top of other elements */
+}
+
+nav .container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the navbar items */
+  align-items: center; /* Center the navbar items vertically */
+  color: #000;
+}
+
+header .navbar {
+  display: flex;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #000;
+}
+
+.navbar a:hover {
+  background-color: #73EC8B;
+  color: #000;
+  padding: 5px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #73EC8B;
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Ensure it takes full height of the parent */
+}
+
+/* Component Styles */
+.form {
+  position: relative;
+  background: #0D7C66;
+  border: 1px solid #0D7C66;
+  width: 350px;
+  padding: 40px 40px 60px;
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.form::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  z-index: -1;
+  transform: skew(2deg, 1deg);
+  border-radius: 10px;
+}
+
+.form h2 {
+  color: #ffffff; 
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.form .input {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form .input .inputBox {
+  margin-top: 10px;
+}
+
+.form .input .inputBox label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.form .input .inputBox input {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: 2px solid #73EC8B;
+  outline: none;
+  padding: 5px 15px;
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  color: #000;
+  font-size: 18px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+.form .input .inputBox input[type="submit"] {
+  cursor: pointer;
+  margin-top: 20px;
+  color: #ffffff;
+  border: 2px solid #73EC8B;
+  
+}
+
+.form .input .inputBox input[type="submit"]:hover {
+  background:#8e1ee9
+}
+
+.form .input .inputBox input[type="submit"]:active {
+  color: --text-color;
+  background: linear-gradient(315deg, #e91e63, #0d7c66);
+}
+
+.forgot {
+  margin-top: 10px;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.forgot a {
+  color: #5d02ff;
+}
+
+div .error {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height to center vertically */
+}
+
+.usernameTitle {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.userInformationDiv {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userEmail,
+.userPhoneNumber,
+.userCampus {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.Span {
+  font-weight: bold;
+}
+
+.XPSection,
+.RatioSection,
+.SkillSection,
+.transactionSection,
+.progressSection,
+.resultsSection {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  background-color: #473078;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 15px 5px #e91e63,;
+}
+
+.graphXpAmount,
+.graphRatioAmount,
+.graphSkillAmount {
+  width: 100%;
+  height: 400px;
+}
+
+.loginFormDiv {
+  display: flex;
+}
+
+.profileDiv {
+  max-width: 600px;
+  margin-top: 100px;
+
+  padding: 20px;
+  background-color: #0D7C66;
+  box-shadow: 0 0 10px #73EC8B;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.charts {
+  max-width: 100%;
+  margin: 20px auto;
+  overflow-x: auto;
+}
+
+#logoutButton {
+  cursor: pointer;
+  margin-bottom: 150px;
+  outline: none;
+  padding: 5px 15px;
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 10px;
+  text-align: center;
+  width: 20%;
+}
+
+#logoutButton:hover,
+#logoutButton:focus {
+  background:#8e1ee9;
+}
+
+h1.XPH1,
+h1.RatioH1,
+h1.SkillH1 {
+  color: #ffffff !important;
+}
+
+.xLine, 
+.yLine {
+  stroke-width: 2.0; /* Adjust this value */
+}
+
+.charts {
+  max-width: 100%;
+  margin: 20px auto;
+  overflow-x: auto;
+}
+
+.graphSkillAmount,
+.graphXpAmount,
+.audit-ratio-chart,
+.audit-line-chart {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.loginFormDiv {
+  display: flex;
+}
+
+.profileDiv {
+  display: none;
+  background-color: none;
+}
+
+h1.XPH1, 
+h1.RatioH1, 
+h1.SkillH1 {
+  color: #ffffff !important;
+}
+
+
+#logoutButton {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  width: 20%;
+  margin: auto;
+  transition: all 0.4s ease-out;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 3.75rem;
+}
+
+/* Hide elements initially */
+.charts, #logoutButton {
+  display: none;
+  color: #ffffff !important;
+  font-weight: bold;
+
+}
+
+@media (max-width: 768px) {
+  .loginForm {
+    width: 90%;
+  }
+
+  .usernameTitle {
+    font-size: 28px;
+  }
+
+  .userEmail,
+  .userPhoneNumber,
+  .userCampus {
+    font-size: 18px;
+  }
+}
