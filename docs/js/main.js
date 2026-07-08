@@ -120,9 +120,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#logoutButton").style.display = "block"; // Show logout button
 
     document.querySelector(".identifierTitle").textContent = `👋🏼 Hello, ${user.attrs.firstName} ${user.attrs.lastName}`;
-    document.querySelector(".userEmail").innerHTML = `<span class='Span'> 📮 E-mail: </span>${user.attrs.email}`;
-    document.querySelector(".userPhoneNumber").innerHTML = `<span class='Span'>📞 Telephone: </span>${user.attrs.tel}`;
+    setupRevealField(document.querySelector(".userEmail"), "📮 E-mail:", user.attrs.email);
+    setupRevealField(document.querySelector(".userPhoneNumber"), "📞 Telephone:", user.attrs.tel);
     document.querySelector(".userCampus").innerHTML = `<span class='Span'>📍 Campus: </span>${user.campus}`;
+  }
+
+  // Keeps the value out of the DOM's text content until clicked, so it isn't
+  // visible on a shared/public screen by default.
+  function setupRevealField(el, label, value) {
+    el.innerHTML = `<span class='Span'>${label} </span><span class="revealValue" style="cursor: pointer; text-decoration: underline dotted;">Click to reveal</span>`;
+    const valueSpan = el.querySelector(".revealValue");
+    let revealed = false;
+    valueSpan.addEventListener("click", () => {
+      revealed = !revealed;
+      valueSpan.textContent = revealed ? value : "Click to reveal";
+    });
   }
 
   function displayLondonDiv01Projects(data) {
