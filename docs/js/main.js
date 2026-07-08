@@ -3,17 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const errorMsg = document.querySelector(".errorMsg");
   const endpoint = "https://learn.01founders.co/api/auth/signin";
   const graphQLEndpoint = "https://learn.01founders.co/api/graphql-engine/v1/graphql";
-  const profileQuery = `user { attrs, campus }`;
-  const skillGoQuery = `user { transactions(where: {type: {_eq: "skill_go"}}, order_by: {amount: asc}) { createdAt, amount, type, path } }`;
-  const xpQuery = `user { xps { amount, path} }`;
-  const auditRatioQuery = `user { audits(order_by: {createdAt: asc}, where: {grade: {_is_null: false}}) { grade, createdAt } }`;
-  const londonDiv01ProjectsQuery = `
-      user { 
-          transactions(where: {path: {_like: "/london/div-01/%"}}, order_by: {createdAt: asc}) { 
-              createdAt, amount, type, path 
-          } 
-      }
-  `;
+  function scopedUserQuery(identifier, selection) {
+    return `user(where: { login: { _eq: "${identifier}" } }) { ${selection} }`;
+  }
 
   document.querySelector("form").addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -28,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const token = await authenticateUser(identifier, password);
       localStorage.setItem("token", JSON.stringify(token));
-      await fetchDataAndDisplay(token);
+      await fetchDataAndDisplay(token, identifier);
     } catch (error) {
       showError(error.message);
     }
@@ -58,8 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
     return tokenData;
   }
 
-  async function fetchDataAndDisplay(token) {
+  async function fetchDataAndDisplay(token, identifier) {
     try {
+      const profileQuery = scopedUserQuery(identifier, "attrs, campus");
+      const skillGoQuery = scopedUserQuery(
+        identifier,
+        `transactions(where: {type: {_eq: "skill_go"}}, order_by: {amount: asc}) { createdAt, amount, type, path }`
+      );
+      const xpQuery = scopedUserQuery(identifier, "xps { amount, path }");
+      const auditRatioQuery = scopedUserQuery(
+        identifier,
+        `audits(order_by: {createdAt: asc}, where: {grade: {_is_null: false}}) { grade, createdAt }`
+      );
+      const londonDiv01ProjectsQuery = scopedUserQuery(
+        identifier,
+        `transactions(where: {path: {_like: "/london/div-01/%"}}, order_by: {createdAt: asc}) { createdAt, amount, type, path }`
+      );
+
       const [profileData, auditData, xpData, skillData, londonDiv01ProjectsData] = await Promise.all([
         fetchGraphQLData(profileQuery, token),
         fetchGraphQLData(auditRatioQuery, token),
